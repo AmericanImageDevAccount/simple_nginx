@@ -1,0 +1,13 @@
+nginx:
+  container_name: nginx
+  image: nginx:latest
+  ports:
+  - "8000:80"
+  volumes:
+  - /vagrant/web:/usr/share/nginx/html:ro
+      #    - ./simple_conf/sites-available/example.com.conf:/ect/nginx/nginx.conf:ro
+#   - ./simple_conf/nginx.conf:/etc/nginx/nginx.conf:ro - IF CHANGING CONFIG
+
+#   - ./var/log/nginx:/var/log/nginx - REMOVE # IF LOGGING
+
+

@@ -1,0 +1,14 @@
+# If you want to run this to serve webfiles that are stored locally and not
+extracted from the git repo:
+
+# 1 - Place the webfiles in this folder
+#
+# 2 - Modify docker-compose.yml
+#     CHANGE: /vagrant/web:/usr/share/nginx/html
+#     TO:     ./nginx-website:/usr/share/nginx/html
+#
+# 3 - If you are using a repo to select public repos to add to Vagrant:
+#     remove the words DOCKER or WEB from the git_grab list.
+#     Otherwise the function will erase your files when it replaces them with the github repos.
+
+
