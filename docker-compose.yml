@@ -6,8 +6,7 @@ services:
     ports:
       - "8000:8000"
   fpm:
-    image: phpfpm
-
+    image: phpdockerio/php7-fpm
   nginx:
     container_name: nginx
     image: nginx:latest
