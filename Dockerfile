@@ -14,6 +14,8 @@ COPY simple_conf/docker/default.conf /etc/nginx/conf.d/
 #RUN adduser www-date && usermod -u 1000 www-data # FOR STANDARD INSTALL
 #RUN adduser nginx && usermod -u 1000 nginx # FOR DOCKER INSTALL
 
+RUN apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/
+
 RUN mkdir -p /usr/share/nginx/html/ && sudo chmod 755 /usr/share/nginx/html
 
 #COPY /vagrant/web/. /usr/share/nginx/html # To copy web files to NGINX to serve
