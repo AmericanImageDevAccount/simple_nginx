@@ -16,7 +16,7 @@ services:
     volumes:
     - /vagrant/web:/usr/share/nginx/html:ro
     links:
-      - php
+      - fpm
 
       # - ./src:/var/www
       #    - ./simple_conf/sites-available/example.com.conf:/ect/nginx/nginx.conf:ro
