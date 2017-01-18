@@ -5,6 +5,25 @@ nginx:
   - "8000:80"
   volumes:
   - /vagrant/web:/usr/share/nginx/html:ro
+  links:
+    - php
+php:
+  image: nmcteam/php56
+  volumes:
+    - ./vagrant/web/php-fpm.conf:/etc/php5/fpm/php-fpm.conf
+    - ./src:/var/www
+  links:
+    - db
+db:
+  image: sameersbn/mysql
+  volumes:
+    - /var/lib/mysql
+  environment:
+    - DB_NAME=demodb
+      DB_USER=demoUser
+      DB_PASS=demoPass
+
+      # - ./src:/var/www
       #    - ./simple_conf/sites-available/example.com.conf:/ect/nginx/nginx.conf:ro
 #   - ./simple_conf/nginx.conf:/etc/nginx/nginx.conf:ro - IF CHANGING CONFIG
 
