@@ -1,27 +1,22 @@
-nginx:
-  container_name: nginx
-  image: nginx:latest
-  ports:
-  - "8000:80"
-  volumes:
-  - /vagrant/web:/usr/share/nginx/html:ro
-  links:
-    - php
-php:
-  image: nmcteam/php56
-  volumes:
-    - ./vagrant/web/php-fpm.conf:/etc/php5/fpm/php-fpm.conf
-    - ./src:/var/www
-  links:
-    - db
-db:
-  image: sameersbn/mysql
-  volumes:
-    - /var/lib/mysql
-  environment:
-    - DB_NAME=demodb
-      DB_USER=demoUser
-      DB_PASS=demoPass
+version: '2'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+  fpm:
+    image: phpfpm
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    ports:
+    - "8000:80"
+    volumes:
+    - /vagrant/web:/usr/share/nginx/html:ro
+    links:
+      - php
 
       # - ./src:/var/www
       #    - ./simple_conf/sites-available/example.com.conf:/ect/nginx/nginx.conf:ro
